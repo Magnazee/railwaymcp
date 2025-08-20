@@ -1,0 +1,10 @@
+# MCP Python SDK with FastMCP support
+mcp>=1.8.0
+
+# Additional dependencies for production deployment
+uvicorn[standard]>=0.24.0
+hypercorn>=0.16.0
+
+# Optional: For more advanced features
+pydantic>=2.0.0
+typing-extensions>=4.0.0
