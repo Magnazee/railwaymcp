@@ -74,16 +74,15 @@ def main():
     """Entry point for the MCP server."""
     # Get port from environment variable (Railway sets this automatically)
     port = int(os.environ.get("PORT", 8000))
-    host = "0.0.0.0"  # Railway requires binding to 0.0.0.0
     
-    print(f"Starting MCP server with Streamable HTTP transport on {host}:{port}")
+    print(f"Starting MCP server with Streamable HTTP transport on port {port}")
+    
+    # Configure server settings for Railway deployment
+    mcp.settings.host = "0.0.0.0"  # Railway requires binding to 0.0.0.0
+    mcp.settings.port = port
     
     # Run with streamable HTTP transport (modern approach)
-    mcp.run(
-        transport="streamable-http",  # Use the new streamable HTTP transport
-        host=host,
-        port=port
-    )
+    mcp.run(transport="streamable-http")
 
 if __name__ == "__main__":
     main()
